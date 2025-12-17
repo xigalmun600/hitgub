@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Delete repository</h1>
+    <p>
+        Are you sure you wanna delete the repository <strong>"{{ repository.name }}"</strong>?
+    </p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Confirmar Eliminación">
+        <a href="{% url 'repository_detail' repository.pk %}">Cancelar</a>
+    </form>
+{% endblock content %}

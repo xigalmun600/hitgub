@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ repository.name }}</h1>
+    <p>
+        <strong>Owner:</strong> {{ repository.owner.name|default:"No Owner" }}
+    </p>
+    <p>
+        <a href="{% url 'repository_update' repository.pk %}">Edit</a> |
+        <a href="{% url 'repository_delete' repository.pk %}">Delete</a>
+    </p>
+{% endblock content %}

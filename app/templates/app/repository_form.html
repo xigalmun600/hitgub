@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if form.instance.pk %}
+        <h2>Edit repository: {{ form.instance.name }}</h2>
+    {% else %}
+        <h2>Create new repository</h2>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+        {% if form.instance.pk %}
+            <a href="{% url 'repository_detail' form.instance.pk %}">Cancel</a>
+        {% else %}
+            <a href="{% url 'repository_list' %}">Cancel</a>
+        {% endif %}
+    </form>
+{% endblock content %}

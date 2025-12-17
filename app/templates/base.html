@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}Repo manager{% endblock %}
+        </title>
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="{% url 'repository_list' %}">Home</a>
+                <a href="{% url 'register' %}">Register</a>
+                <a href="{% url 'repository_create' %}">Create repository</a>
+            </nav>
+        </header>
+        <main>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}<li class="{{ message.tags }}">{{ message }}</li>{% endfor %}
+                </ul>
+            {% endif %}
+            {% block content %}
+            {% endblock content %}
+        </main>
+    </body>
+</html>

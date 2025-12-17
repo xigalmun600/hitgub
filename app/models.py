@@ -24,7 +24,11 @@ class User(models.Model):
 
 class Repository(models.Model):
     owner = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="repositories"
+        User,
+        on_delete=models.CASCADE,
+        related_name="repositories",
+        null=True,
+        blank=True,
     )
     name = models.CharField(max_length=200)
     description = models.TextField()

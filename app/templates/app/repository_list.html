@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>All repos</h1>
+    <p>
+        <a href="{% url 'repository_create' %}">Create new repository</a>
+    </p>
+    {% if repositories %}
+        <ul>
+            {% for repo in repositories %}
+                <li>
+                    <a href="{% url 'repository_detail' repo.pk %}">{{ repo.name }}</a>
+                    (Dueño: {{ repo.owner.name }}) - {{ repo.stars }} stars
+                    {% if repo.is_private %}Private{% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No repos avaliable</p>
+    {% endif %}
+{% endblock content %}
